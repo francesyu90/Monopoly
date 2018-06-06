@@ -148,7 +148,7 @@ class GameLogic:
         jailIndex = board.getJailIndex()
         if curPosIndex == jailIndex and posIndex != -CardType.GOOJF.value:
             return token
-        elif posIndex > 0:
+        elif posIndex >= 0:
             return GameLogic.moveTokenByPosIndex(token, posIndex)
         elif posIndex == -3:
             curPosIndex = token.getCurrentPosIndex()
