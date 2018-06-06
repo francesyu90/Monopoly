@@ -33,6 +33,8 @@ class Simulation:
                 token = GameLogic.moveTokenByNumSteps(token, resSum)
             elif token.getCurrentPosIndex() == gameBoard.getJailIndex() and num2 == 0:
                 token = GameLogic.moveTokenOutOfJail(token, resSum)
+            else:
+                continue
 
             print(token.getCurrentPosIndex())
             print(token.justVisitJail())
