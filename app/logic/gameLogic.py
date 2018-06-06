@@ -33,10 +33,9 @@ class GameLogic:
     def moveTokenToJail(token, board):
         return GameLogic.handleGivencardGTJ(board, token)
 
-    def moveTokenOutOfJail(token, board):
-        jailIndex = board.getJailIndex()
+    def moveTokenOutOfJail(token, numSteps):
         token.setIsJustVisitJail(True)
-        return GameLogic.moveTokenByPosIndex(token, jailIndex+1)
+        return GameLogic.moveTokenByNumSteps(token, numSteps)
 
     def determineNextPosIndexGivenCard(card, board):
         if card.typeI == CardType.OTHERS:
@@ -143,6 +142,11 @@ class GameLogic:
 
     def moveTokenByPosIndexGivenCard(board, token, posIndex):
         if posIndex == -1:
+            return token
+
+        curPosIndex = token.getCurrentPosIndex()
+        jailIndex = board.getJailIndex()
+        if curPosIndex == jailIndex and posIndex != -CardType.GOOJF.value:
             return token
         elif posIndex > 0:
             return GameLogic.moveTokenByPosIndex(token, posIndex)

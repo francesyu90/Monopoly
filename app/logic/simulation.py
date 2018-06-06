@@ -32,7 +32,7 @@ class Simulation:
             elif token.getCurrentPosIndex() != gameBoard.getJailIndex() or token.justVisitJail() == True:
                 token = GameLogic.moveTokenByNumSteps(token, resSum)
             elif token.getCurrentPosIndex() == gameBoard.getJailIndex() and num2 == 0:
-                token = GameLogic.moveTokenOutOfJail(token, gameBoard)
+                token = GameLogic.moveTokenOutOfJail(token, resSum)
 
             print(token.getCurrentPosIndex())
             print(token.justVisitJail())
